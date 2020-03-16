@@ -82,13 +82,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 1. Clone this project
 2. At root directory copy .env.example to .env
 3. Open terminal this several command
-    $ composer install
-    $ php artisan key:generate
-    $ php artisan storage:link
-    $ php artisan migrate
-    $ php artisan db:seed
+- composer install
+- php artisan key:generate
+- php artisan storage:link
+- php artisan migrate
+- php artisan db:seed
 4. To run this project in terminal type
-    $ php artisan serve
+- php artisan serve
 5. You can login using
-    username : agung
-    password : 123
+- username : agung
+- password : 123
