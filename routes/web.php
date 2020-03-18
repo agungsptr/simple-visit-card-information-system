@@ -21,6 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// disable route '/register'
 Route::match(["GET", "POST"], "/register", function(){
     return redirect("/login");
 })->name("register");
+
+Route::resource('pasien', 'Pasien\PasienController');
