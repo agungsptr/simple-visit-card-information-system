@@ -14,7 +14,7 @@ Edit Pasien
 
     <form action="{{ route('pasien.update', ['pasien'=>$pasien->id]) }}" method="POST">
         @csrf
-        <input name="_method" type="hidden" value="PUT">
+        @method('PUT')
 
         <div class="card shadow">
             <div class="card-header">
@@ -23,13 +23,18 @@ Edit Pasien
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Nama Pasien</label>
+                    <input name="no_pasien" type="number" class="form-control" readonly
+                        value="{{ $pasien->no_pasien }}">
+                </div>
+                <div class="form-group">
+                    <label for="">Nama Pasien</label>
                     <input name="nama" type="text" class="form-control" value="{{ $pasien->nama }}">
                 </div>
                 <div class="form-group">
                     <label for="">Jenis Kelamin</label>
                     <select name="kelamin" id="" class="form-control">
                         <option {{ $pasien->kelamin == 'L' ? 'selected':'' }} value="L">Pria</option>
-                        <option {{ $pasien->kelamin == 'P' ? 'selected':'' }}value="P">Wanita</option>
+                        <option {{ $pasien->kelamin == 'P' ? 'selected':'' }} value="P">Wanita</option>
                     </select>
                 </div>
                 <div class="form-group">

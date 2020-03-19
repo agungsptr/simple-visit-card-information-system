@@ -27,3 +27,12 @@ Route::match(["GET", "POST"], "/register", function(){
 })->name("register");
 
 Route::resource('pasien', 'Pasien\PasienController');
+
+Route::group(['prefix' => 'pasien/detail/{id}'], function () {
+    Route::get('/', 'Pasien\PasienDetailController@index')->name('detail.index');
+    Route::get('create', 'Pasien\PasienDetailController@create')->name('detail.create');
+    Route::post('/', 'Pasien\PasienDetailController@store')->name('detail.store');
+    Route::get('{detail_id}/edit', 'Pasien\PasienDetailController@edit')->name('detail.edit');
+    Route::put('{detail_id}', 'Pasien\PasienDetailController@update')->name('detail.update');
+    Route::delete('{detail_id}', 'Pasien\PasienDetailController@destroy')->name('detail.destroy');
+});

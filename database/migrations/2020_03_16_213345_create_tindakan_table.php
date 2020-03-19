@@ -17,9 +17,9 @@ class CreateTindakanTable extends Migration
             $table->id();
             $table->timestamps();
             $table->text('diagnosa');
-            $table->text('terapi');
-            $table->string('foto_sebelum', 255);
-            $table->string('foto_sesudah', 255);
+            $table->text('terapi')->nullable();
+            $table->string('foto_sebelum', 255)->nullable();
+            $table->string('foto_sesudah', 255)->nullable();
             $table->bigInteger('pasien_id')->unsigned();
             $table->foreign('pasien_id')->references('id')->on('pasien');
         });

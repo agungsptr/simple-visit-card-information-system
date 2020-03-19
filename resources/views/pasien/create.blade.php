@@ -21,6 +21,10 @@ Create Pasien
             </div>
             <div class="card-body">
                 <div class="form-group">
+                    <label for="">No Pasien</label>
+                    <input name="no_pasien" type="number" class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="">Nama Pasien</label>
                     <input name="nama" type="text" class="form-control">
                 </div>
@@ -44,6 +48,7 @@ Create Pasien
                     <textarea name="alamat" id="" cols="30" rows="3" class="form-control"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-md float-right">Simpan</button>
+                <a href="{{ route('pasien.index') }}" class="btn btn-secondary btn-md float-right mr-2">Kembali</a>
             </div>
         </div>
     </form>

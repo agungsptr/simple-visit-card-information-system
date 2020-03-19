@@ -16,6 +16,7 @@ class CreatePasienTable extends Migration
         Schema::create('pasien', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInteger('no_pasien', 20)->unsigned();
             $table->string('nama', 191);
             $table->char('kelamin', 1);
             $table->integer('umur');

@@ -49,7 +49,7 @@ class PasienController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404);
     }
 
     /**
