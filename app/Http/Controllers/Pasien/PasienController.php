@@ -60,7 +60,8 @@ class PasienController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pasien = Pasien::findOrFail($id);
+        return view('pasien.edit', ['pasien' => $pasien]);
     }
 
     /**
@@ -72,7 +73,15 @@ class PasienController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pasien = Pasien::findOrFail($id);
+        $pasien->nama = $request->get('nama');
+        $pasien->kelamin = $request->get('kelamin');
+        $pasien->umur = $request->get('umur');
+        $pasien->alamat = $request->get('alamat');
+        $pasien->telp = $request->get('telp');
+        $pasien->save();
+
+        return redirect()->route('pasien.edit', ['pasien'=>$id])->with('status', 'Pasien Berhasil Diedit');
     }
 
     /**
@@ -83,6 +92,9 @@ class PasienController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pasien = Pasien::findOrFail($id);
+        $name = $pasien->nama;
+        $pasien->delete();
+        return redirect()->route('pasien.index')->with('status', "Berhasil Menghapus Pasien $name");
     }
 }
