@@ -18,7 +18,7 @@ Edit Tindakan
         </div>
         <div class="card-body">
             <form action="{{route('detail.update', ['id'=>$tindakan->pasien_id, 'detail_id'=>$tindakan->id])}}"
-                method="POST">
+                method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -26,6 +26,14 @@ Edit Tindakan
                     <div class="col-6">
                         <div class="form-group">
                             <label for="">Foto Sebelum</label>
+                            <div class="mb-2">
+                                @if ($tindakan->foto_sebelum)
+                                <a href="{{ asset('storage/'.$tindakan->foto_sebelum) }}">
+                                    <img src="{{ asset('storage/'.$tindakan->foto_sebelum) }}" alt="foto sebelum"
+                                        width="300px">
+                                </a>
+                                @endif
+                            </div>
                             <input name="foto_sebelum" type="file" class="form-control-file"
                                 value="{{$tindakan->foto_sebelum}}">
                         </div>
@@ -33,6 +41,14 @@ Edit Tindakan
                     <div class="col-6">
                         <div class="form-group">
                             <label for="">Foto Sesudah</label>
+                            <div class="mb-2">
+                                @if ($tindakan->foto_sesudah)
+                                <a href="{{ asset('storage/'.$tindakan->foto_sesudah) }}">
+                                    <img src="{{ asset('storage/'.$tindakan->foto_sesudah) }}" alt="foto sesudah"
+                                        width="300px">
+                                </a>
+                                @endif
+                            </div>
                             <input name="foto_sesudah" type="file" class="form-control-file"
                                 value="{{$tindakan->foto_sesudah}}">
                         </div>
@@ -50,7 +66,8 @@ Edit Tindakan
                 </div>
                 <input name="pasien_id" type="hidden" value="{{$tindakan->pasien_id}}">
                 <button type="submit" class="btn btn-primary btn-md float-right">Simpan</button>
-                <a href="{{route('detail.index', ['id'=>$tindakan->pasien_id])}}" class="btn btn-secondary btn-md float-right mr-2">Kembali</a>
+                <a href="{{route('detail.index', ['id'=>$tindakan->pasien_id])}}"
+                    class="btn btn-secondary btn-md float-right mr-2">Kembali</a>
             </form>
         </div>
     </div>

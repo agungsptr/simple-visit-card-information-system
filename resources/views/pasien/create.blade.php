@@ -22,30 +22,66 @@ Create Pasien
             <div class="card-body">
                 <div class="form-group">
                     <label for="">No Pasien</label>
-                    <input name="no_pasien" type="number" class="form-control">
+                    <input name="no_pasien" type="text" onkeypress="isInputNumber(event)"
+                        class="form-control {{$errors->first('no_pasien') ? 'is-invalid':''}}"
+                        value="{{old('no_pasien')}}" required>
+                    @error('no_pasien')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Nama Pasien</label>
-                    <input name="nama" type="text" class="form-control">
+                    <input name="nama" type="text" class="form-control {{$errors->first('nama') ? 'is-invalid':''}}"
+                        value="{{old('nama')}}" required>
+                    @error('nama')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Jenis Kelamin</label>
-                    <select name="kelamin" id="" class="form-control">
-                        <option value="L">Pria</option>
-                        <option value="P">Wanita</option>
+                    <select name="kelamin" id="" class="form-control {{$errors->first('kelamin') ? 'is-invalid':''}}">
+                        <option {{old('kelamin') == 'L' ? 'SELECTED':''}} value="L">Pria</option>
+                        <option {{old('kelamin') == 'P' ? 'SELECTED':''}} value="P">Wanita</option>
                     </select>
+                    @error('kelamin')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Usia</label>
-                    <input name="umur" type="number" class="form-control">
+                    <input name="umur" type="text" class="form-control {{$errors->first('umur') ? 'is-invalid':''}}"
+                        onkeypress="isInputNumber(event)" value="{{old('umur')}}" required>
+                    @error('umur')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Nomor Telepon</label>
-                    <input name="telp" type="number" maxlength="15" class="form-control">
+                    <input name="telp" type="text" class="form-control {{$errors->first('telp') ? 'is-invalid':''}}"
+                        onkeypress="isInputNumber(event)" value="{{old('telp')}}" required>
+                    @error('telp')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    <textarea name="alamat" id="" cols="30" rows="3" class="form-control"></textarea>
+                    <textarea name="alamat" id="" cols="30" rows="3"
+                        class="form-control {{$errors->first('alamat') ? 'is-invalid':''}}" required>{{old('alamat')}}</textarea>
+                    @error('alamat')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary btn-md float-right">Simpan</button>
                 <a href="{{ route('pasien.index') }}" class="btn btn-secondary btn-md float-right mr-2">Kembali</a>

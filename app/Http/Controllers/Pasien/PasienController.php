@@ -37,6 +37,30 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'no_pasien' => 'required|unique:pasien',
+                'nama' => "required|max:191",
+                'kelamin' => "required|max:1",
+                'umur' => "required|max:3",
+                'alamat' => "required",
+                'telp' => "required|max:15",
+            ],
+            [
+                'no_pasien.required' => 'No pasien harus diisi',
+                'no_pasien.unique' => 'No pasien sudah terdaftar',
+                'nama.required' => 'Nama harus diisi',
+                'nama.max' => 'Nama tidak boleh melebihi 191 karakter',
+                'kelamin.required' => 'Jenis kelamin harus diisi',
+                'kelamin.max' => 'Jenis kelamin tidak boleh 2',
+                'umur.required' => 'Umur harus diisi',
+                'umur.max' => 'Umur tidak boleh melebihi 3 digit',
+                'alamat.required' => 'Alamat harus diisi',
+                'telp.required' => 'Nomor telepon harus diisi',
+                'telp.max' => 'Nomor telepon tidak boleh melebihi 15 digit',
+            ]
+        );
+
         Pasien::create($request->all());
         return redirect()->route('pasien.create')->with('status', 'Pasien Berhasil Ditambahkan');
     }
@@ -73,6 +97,27 @@ class PasienController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate(
+            [
+                'nama' => "required|max:191",
+                'kelamin' => "required|max:1",
+                'umur' => "required|max:3",
+                'alamat' => "required",
+                'telp' => "required|max:15",
+            ],
+            [
+                'nama.required' => 'Nama harus diisi',
+                'nama.max' => 'Nama tidak boleh melebihi 191 karakter',
+                'kelamin.required' => 'Jenis kelamin harus diisi',
+                'kelamin.max' => 'Jenis kelamin tidak boleh 2',
+                'umur.required' => 'Umur harus diisi',
+                'umur.max' => 'Umur tidak boleh melebihi 3 digit',
+                'alamat.required' => 'Alamat harus diisi',
+                'telp.required' => 'Nomor telepon harus diisi',
+                'telp.max' => 'Nomor telepon tidak boleh melebihi 15 digit',
+            ]
+        );
+
         $pasien = Pasien::findOrFail($id);
         $pasien->nama = $request->get('nama');
         $pasien->kelamin = $request->get('kelamin');
@@ -81,7 +126,7 @@ class PasienController extends Controller
         $pasien->telp = $request->get('telp');
         $pasien->save();
 
-        return redirect()->route('pasien.edit', ['pasien'=>$id])->with('status', 'Pasien Berhasil Diedit');
+        return redirect()->route('pasien.edit', ['pasien' => $id])->with('status', 'Pasien Berhasil Diedit');
     }
 
     /**

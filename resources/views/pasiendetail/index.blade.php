@@ -79,8 +79,26 @@ Detail Pasien
                         <td>{{$tindakan->created_at}}</td>
                         <td>{{$tindakan->diagnosa}}</td>
                         <td>{{$tindakan->terapi}}</td>
-                        <td>{{$tindakan->foto_sebelum}}</td>
-                        <td>{{$tindakan->foto_sesudah}}</td>
+                        <td>
+                            @if ($tindakan->foto_sebelum)
+                            <a href="{{ asset('storage/'.$tindakan->foto_sebelum) }}">
+                                <img src="{{ asset('storage/'.$tindakan->foto_sebelum) }}" alt="foto sebelum"
+                                    width="100px">
+                            </a>
+                            @else
+                            N/A
+                            @endif
+                        </td>
+                        <td>
+                            @if ($tindakan->foto_sesudah)
+                            <a href="{{ asset('storage/'.$tindakan->foto_sesudah) }}">
+                                <img src="{{ asset('storage/'.$tindakan->foto_sesudah) }}" alt="foto sesudah"
+                                    width="100px">
+                            </a>
+                            @else
+                            N/A
+                            @endif
+                        </td>
                         <td>
                             <a href="{{route('detail.edit', ['id'=>$pasien->id, 'detail_id'=>$tindakan->id])}}"
                                 class="btn btn-warning btn-sm">Edit</a>

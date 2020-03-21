@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Pasien;
 use App\Tindakan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PasienDetailController extends Controller
 {
@@ -32,6 +33,7 @@ class PasienDetailController extends Controller
     public function create($id)
     {
         $pasien = Pasien::findOrFail($id);
+
         return view('pasiendetail.create', ['id' => $pasien->id]);
     }
 
@@ -44,7 +46,21 @@ class PasienDetailController extends Controller
     public function store(Request $request, $id)
     {
         $pasien = Pasien::findOrFail($id);
-        Tindakan::create($request->all());
+        $tindakan = Tindakan::create($request->all());
+
+        if ($request->file('foto_sebelum')) {
+            $dir = "public/Foto/$pasien->no_pasien/Sebelum/";
+            $file = $request->file('foto_sebelum')->store($dir, 'public');
+            $tindakan->foto_sebelum = $file;
+        }
+
+        if ($request->file('foto_sesudah')) {
+            $dir = "public/Foto/$pasien->no_pasien/Sesudah";
+            $file = $request->file('foto_sesudah')->store($dir, 'public');
+            $tindakan->foto_sesudah = $file;
+        }
+
+        $tindakan->save();
         return redirect()->route('detail.create', ['id' => $pasien->id])->with('status', $pasien->nama);
     }
 
@@ -85,8 +101,25 @@ class PasienDetailController extends Controller
         $tindakan = Tindakan::findOrFail($detail_id);
         $tindakan->diagnosa = $request->get('diagnosa');
         $tindakan->terapi = $request->get('terapi');
-        $tindakan->foto_sebelum = $request->get('foto_sebelum');
-        $tindakan->foto_sesudah = $request->get('foto_sesudah');
+
+        if ($request->file('foto_sebelum')) {
+            if ($tindakan->foto_sebelum && file_exists(storage_path('app/public' . $tindakan->foto_sebelum))) {
+                Storage::delete('public/' . $tindakan->foto_sebelum);
+            }
+            $dir = "public/Foto/$pasien->no_pasien/Sebelum/";
+            $file = $request->file('foto_sebelum')->store($dir, 'public');
+            $tindakan->foto_sebelum = $file;
+        }
+
+        if ($request->file('foto_sesudah')) {
+            if ($tindakan->foto_sesudah && file_exists(storage_path('app/public' . $tindakan->foto_sesudah))) {
+                Storage::delete('public/' . $tindakan->foto_sesudah);
+            }
+            $dir = "public/Foto/$pasien->no_pasien/Sesudah/";
+            $file = $request->file('foto_sesudah')->store($dir, 'public');
+            $tindakan->foto_sesudah = $file;
+        }
+        
         $tindakan->save();
 
         return redirect()->route('detail.edit', [
@@ -108,6 +141,6 @@ class PasienDetailController extends Controller
         $date = $tindakan->created_at;
         $tindakan->delete();
 
-        return redirect()->route('detail.index', ['id'=>$id])->with('status', "Berhasil menghapus tindakan $date");
+        return redirect()->route('detail.index', ['id' => $id])->with('status', "Berhasil menghapus tindakan $date");
     }
 }

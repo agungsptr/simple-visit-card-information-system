@@ -17,7 +17,7 @@ Detail Pasien Create
             <strong>Create Detail Pasien</strong>
         </div>
         <div class="card-body">
-            <form action="{{ route('detail.store', ['id'=>$id]) }}" method="POST">
+            <form action="{{ route('detail.store', ['id'=>$id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
@@ -44,7 +44,8 @@ Detail Pasien Create
                 </div>
                 <input name="pasien_id" type="hidden" value="{{$id}}">
                 <button type="submit" class="btn btn-primary btn-md float-right">Simpan</button>
-                <a href="{{ route('detail.index', ['id'=>$id]) }}" class="btn btn-secondary btn-md mr-2 float-right">Kembali</a>
+                <a href="{{ route('detail.index', ['id'=>$id]) }}"
+                    class="btn btn-secondary btn-md mr-2 float-right">Kembali</a>
             </form>
         </div>
     </div>
