@@ -45,6 +45,17 @@ class PasienDetailController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $request->validate(
+            [
+                'diagnosa' => "required",
+                'terapi' => "required",
+            ],
+            [
+                'diagnosa.required' => 'Diagnosa harus diisi',
+                'terapi.required' => 'Terapi harus diisi',
+            ]
+        );
+
         $pasien = Pasien::findOrFail($id);
         $tindakan = Tindakan::create($request->all());
 
@@ -97,6 +108,16 @@ class PasienDetailController extends Controller
      */
     public function update(Request $request, $id, $detail_id)
     {
+        $request->validate(
+            [
+                'diagnosa' => "required",
+                'terapi' => "required",
+            ],
+            [
+                'diagnosa.required' => 'Diagnosa harus diisi',
+                'terapi.required' => 'Terapi harus diisi',
+            ]
+        );
         $pasien = Pasien::findOrFail($id);
         $tindakan = Tindakan::findOrFail($detail_id);
         $tindakan->diagnosa = $request->get('diagnosa');
@@ -119,7 +140,7 @@ class PasienDetailController extends Controller
             $file = $request->file('foto_sesudah')->store($dir, 'public');
             $tindakan->foto_sesudah = $file;
         }
-        
+
         $tindakan->save();
 
         return redirect()->route('detail.edit', [

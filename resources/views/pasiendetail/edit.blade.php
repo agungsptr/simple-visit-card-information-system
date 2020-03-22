@@ -57,12 +57,24 @@ Edit Tindakan
                 <div class="form-group">
                     <label for="">Diagnosa</label>
                     <textarea name="diagnosa" id="" cols="30" rows="3"
-                        class="form-control">{{$tindakan->diagnosa}}</textarea>
+                        class="form-control {{$errors->first('diagnosa') ? 'is-invalid':''}}"
+                        required>{{$tindakan->diagnosa}}</textarea>
+                    @error('diagnosa')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="">Therapi</label>
                     <textarea name="terapi" id="" cols="30" rows="3"
-                        class="form-control">{{$tindakan->terapi}}</textarea>
+                        class="form-control {{$errors->first('terapi') ? 'is-invalid':''}}"
+                        required>{{$tindakan->terapi}}</textarea>
+                    @error('terapi')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <input name="pasien_id" type="hidden" value="{{$tindakan->pasien_id}}">
                 <button type="submit" class="btn btn-primary btn-md float-right">Simpan</button>
