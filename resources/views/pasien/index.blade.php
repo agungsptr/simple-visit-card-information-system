@@ -47,7 +47,7 @@ List Pasien
             </div>
             <div class="modal-body" id="modal-body"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                 <form action="" id="form-delete" class="form-inline" method="POST">
                     @csrf
                     @method('DELETE')

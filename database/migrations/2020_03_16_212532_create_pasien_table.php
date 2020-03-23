@@ -21,7 +21,7 @@ class CreatePasienTable extends Migration
             $table->char('kelamin', 1);
             $table->integer('umur');
             $table->text('alamat');
-            $table->char('telp', 15);
+            $table->string('telp', 15);
         });
     }
 

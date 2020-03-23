@@ -22,9 +22,4 @@ class DataTableController extends Controller
             ->rawColumns(['aksi'])
             ->toJson();
     }
-
-    public function getPasienDetail()
-    {
-        //
-    }
 }

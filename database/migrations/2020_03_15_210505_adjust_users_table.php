@@ -15,7 +15,8 @@ class AdjustUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string("username")->unique();
-            $table->string("phone");
+            $table->string("role");
+            $table->string("telp", 15);
         });
     }
 
@@ -29,7 +30,7 @@ class AdjustUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn("username");
             $table->dropColumn("role");
-            $table->dropColumn("phone");
+            $table->dropColumn("telp");
         });
     }
 }
