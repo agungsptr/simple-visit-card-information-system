@@ -8,7 +8,11 @@ Pasien
 Edit Pasien
 @endsection
 
-@section('pasien-status')
+@section('menu-pasien-status')
+active
+@endsection
+
+@section('menu-pasien-dashboard-status')
 active
 @endsection
 

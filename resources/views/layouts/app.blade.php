@@ -12,11 +12,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{asset('vendor/plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/AdminLTE/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('vendor/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('vendor/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/AdminLTE/dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -26,7 +26,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/DataTables/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/AdminLTE/DataTables/datatables.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -69,17 +69,21 @@
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="index3.html" class="brand-link">
+                <img src="{{asset('vendor/AdminLTE/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">SI Kartu Kunjungan</span>
+            </a>
+
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel pb-3 mb-3 d-flex">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <i class="fas fa-user fa-2x" style="color: white;"></i>
+                    <img src="{{asset('vendor/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">
-                            {{ Auth::user()->name }}
-                        </a>
+                        <a href="#" class="d-block">{{Auth::user()->name}}</a>
                     </div>
                 </div>
 
@@ -92,20 +96,39 @@
 
                         <li class="nav-header">DATA PASIEN</li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link @yield('cari-status')">
+                            <a href="#" class="nav-link @yield('menu-cari-status')">
                                 <i class="nav-icon fas fa-search"></i>
                                 <p>
                                     Cari
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('pasien.index')}}" class="nav-link @yield('pasien-status')">
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link @yield('menu-pasien-status')">
                                 <i class="nav-icon fas fa-notes-medical"></i>
                                 <p>
-                                    Daftar Pasien
+                                    Pasien
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('pasien.index')}}"
+                                        class="nav-link @yield('menu-pasien-dashboard-status')">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>List Pasien</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('pasien.create')}}"
+                                        class="nav-link @yield('menu-pasien-tambah-status')">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Tambah Pasien</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-header">USER</li>
                         <li class="nav-item">
@@ -191,30 +214,30 @@
 
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="{{asset('vendor/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap -->
-    <script src="{{asset('vendor/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- overlayScrollbars -->
-    <script src="{{asset('vendor/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <!-- AdminLTE App -->
-    <script src="{{asset('vendor/dist/js/adminlte.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/dist/js/adminlte.js')}}"></script>
 
     <!-- OPTIONAL SCRIPTS -->
-    <script src="{{asset('vendor/dist/js/demo.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/dist/js/demo.js')}}"></script>
 
     <!-- PAGE PLUGINS -->
     <!-- jQuery Mapael -->
-    <script src="{{asset('vendor/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
-    <script src="{{asset('vendor/plugins/raphael/raphael.min.js')}}"></script>
-    <script src="{{asset('vendor/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
-    <script src="{{asset('vendor/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/raphael/raphael.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
     <!-- ChartJS -->
-    <script src="{{asset('vendor/plugins/chart.js/Chart.min.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/plugins/chart.js/Chart.min.js')}}"></script>
 
     <!-- PAGE SCRIPTS -->
-    <script src="{{asset('vendor/dist/js/pages/dashboard2.js')}}"></script>
+    <script src="{{asset('vendor/AdminLTE/dist/js/pages/dashboard2.js')}}"></script>
 
-    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.js') }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/AdminLTE/DataTables/datatables.js') }}"></script>
 
     <script>
         $(document).ready(function () {

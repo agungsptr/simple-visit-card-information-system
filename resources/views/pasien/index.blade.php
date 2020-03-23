@@ -8,7 +8,11 @@ Pasien
 List Pasien
 @endsection
 
-@section('pasien-status')
+@section('menu-pasien-status')
+active
+@endsection
+
+@section('menu-pasien-dashboard-status')
 active
 @endsection
 
@@ -21,14 +25,6 @@ active
     </button>
 </div>
 @endif
-
-<div class="row">
-    <div class="col">
-        <div>
-            <a href="{{ route('pasien.create') }}" class="btn btn-primary btn-md float-left mb-3">Tambah</a>
-        </div>
-    </div>
-</div>
 <div class="row">
     <div class="col-12">
         <table class="table table-striped table-bordered table-hover" style="width:100%" id="table_id">
