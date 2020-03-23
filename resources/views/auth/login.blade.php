@@ -5,14 +5,14 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/login_util.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/login_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.css') }}">
+	<link rel="stylesheet" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/login_util.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/login_main.css') }}">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
 							value="{{ old('identity') }}">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<span class="lnr lnr-user"></span>
+							<i class="lnr lnr-user"></i>
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">

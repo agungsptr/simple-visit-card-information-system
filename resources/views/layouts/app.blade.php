@@ -26,7 +26,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/AdminLTE/DataTables/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/DataTables/datatables.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -237,7 +237,7 @@
     <!-- PAGE SCRIPTS -->
     <script src="{{asset('vendor/AdminLTE/dist/js/pages/dashboard2.js')}}"></script>
 
-    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/AdminLTE/DataTables/datatables.js') }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.js') }}"></script>
 
     <script>
         $(document).ready(function () {
