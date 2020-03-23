@@ -1,35 +1,47 @@
 @extends('layouts.app')
 
 @section('title')
+Pasien
+@endsection
+
+@section('title-card')
 List Pasien
 @endsection
 
-@section('content')
-<div class="container">
-    @if (session('status'))
-    <div class="alert alert-success">
-        {{session('status')}}
-    </div>
-    @endif
+@section('pasien-status')
+active
+@endsection
 
-    <div class="card shadow">
-        <div class="card-header">
-            <strong>Daftar Pasien</strong>
-            <a href="{{ route('pasien.create') }}" class="btn btn-primary btn-sm float-right">Tambah</a>
+@section('content')
+@if (session('status'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+<div class="row">
+    <div class="col">
+        <div>
+            <a href="{{ route('pasien.create') }}" class="btn btn-primary btn-md float-left mb-3">Tambah</a>
         </div>
-        <div class="card-body">
-            <table class="display" id="table_id">
-                <thead>
-                    <tr>
-                        <th>No. Pasien</th>
-                        <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Telepon</th>
-                        <th></th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-bordered table-hover" style="width:100%" id="table_id">
+            <thead>
+                <tr>
+                    <th style="width: 110px">No. Pasien</th>
+                    <th>Nama</th>
+                    <th style="width: 100px">Jenis Kelamin</th>
+                    <th style="width: 140px">Telepon</th>
+                    <th style="width: 162px">Action</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
 @endsection
@@ -51,7 +63,7 @@ List Pasien
                 <form action="" id="form-delete" class="form-inline" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger" id="form-btn_delete">Hapus</button>
+                    <button type="submit" class="btn btn-danger" id="form-btn_delete">Delete</button>
                 </form>
             </div>
         </div>
