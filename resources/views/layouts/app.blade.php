@@ -58,18 +58,13 @@
                         </form>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-                            class="fas fa-th-large"></i></a>
-                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <span class="brand-text font-weight-light ml-2"></span>
             </a>
 
@@ -128,13 +123,30 @@
                         </li>
                         @if (Auth::user()->role == 'admin')
                         <li class="nav-header">USER</li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link @yield('user-status')">
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users-cog"></i>
                                 <p>
                                     Manage User
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('user.index')}}" class="nav-link">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>List User</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Tambah User</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         @endif
                     </ul>
@@ -196,13 +208,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-
     </div>
     <!-- ./wrapper -->
 
@@ -219,21 +224,6 @@
     <script src="{{asset('vendor/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('vendor/AdminLTE/dist/js/adminlte.js')}}"></script>
-
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="{{asset('vendor/AdminLTE/dist/js/demo.js')}}"></script>
-
-    <!-- PAGE PLUGINS -->
-    <!-- jQuery Mapael -->
-    <script src="{{asset('vendor/AdminLTE/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
-    <script src="{{asset('vendor/AdminLTE/plugins/raphael/raphael.min.js')}}"></script>
-    <script src="{{asset('vendor/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
-    <script src="{{asset('vendor/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
-    <!-- ChartJS -->
-    <script src="{{asset('vendor/AdminLTE/plugins/chart.js/Chart.min.js')}}"></script>
-
-    <!-- PAGE SCRIPTS -->
-    <script src="{{asset('vendor/AdminLTE/dist/js/pages/dashboard2.js')}}"></script>
 
     <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.js') }}"></script>
 

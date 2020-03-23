@@ -25,6 +25,7 @@ Route::match(["GET", "POST"], "/register", function(){
 })->name("register");
 
 Route::resource('pasien', 'Pasien\PasienController');
+Route::resource('user', 'User\UserController');
 
 Route::group(['prefix' => 'pasien/detail/{id}'], function () {
     Route::get('/', 'Pasien\PasienDetailController@index')->name('detail.index');
@@ -36,5 +37,5 @@ Route::group(['prefix' => 'pasien/detail/{id}'], function () {
 });
 
 Route::group(['prefix' => 'getdata'], function () {
-    Route::get('pasien', 'Pasien\DataTableController@getPasien')->name('getdata.pasien');
+    Route::get('pasien', 'DataTableController@getPasien')->name('getdata.pasien');
 });
