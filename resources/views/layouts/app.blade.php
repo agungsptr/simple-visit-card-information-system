@@ -53,7 +53,7 @@
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="dropdown-item">
-                                <i class="fas fa-sign-out-alt mr-2"></i> Keluar
+                                <i class="fas fa-sign-out-alt mr-2" style="color: grey"></i> Keluar
                             </button>
                         </form>
                     </div>
@@ -70,20 +70,16 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="index3.html" class="brand-link">
-                <img src="{{asset('vendor/AdminLTE/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">SI Kartu Kunjungan</span>
+                <span class="brand-text font-weight-light ml-2"></span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                    <img src="{{asset('vendor/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-                    </div>
+                    <i class="fas fa-user fa-2x ml-3" style="color: white"></i>
                     <div class="info">
-                        <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                        <a href="#" class="d-block font-weight-bold">{{strtoupper(Auth::user()->name)}}</a>
                     </div>
                 </div>
 
@@ -130,6 +126,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @if (Auth::user()->role == 'admin')
                         <li class="nav-header">USER</li>
                         <li class="nav-item">
                             <a href="#" class="nav-link @yield('user-status')">
@@ -139,6 +136,7 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                     </ul>
 
                 </nav>
