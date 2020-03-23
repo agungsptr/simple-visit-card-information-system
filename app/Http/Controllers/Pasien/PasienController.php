@@ -20,8 +20,7 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $pasiens = Pasien::paginate(10);
-        return view('pasien.index', ['pasiens' => $pasiens]);
+        return view('pasien.index');
     }
 
     /**

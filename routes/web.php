@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return redirect()->route('pasien.index');
 });
-
-Auth::routes();
 
 // disable route '/register'
 Route::match(["GET", "POST"], "/register", function(){
@@ -33,4 +33,8 @@ Route::group(['prefix' => 'pasien/detail/{id}'], function () {
     Route::get('{detail_id}/edit', 'Pasien\PasienDetailController@edit')->name('detail.edit');
     Route::put('{detail_id}', 'Pasien\PasienDetailController@update')->name('detail.update');
     Route::delete('{detail_id}', 'Pasien\PasienDetailController@destroy')->name('detail.destroy');
+});
+
+Route::group(['prefix' => 'getdata'], function () {
+    Route::get('pasien', 'Pasien\DataTableController@getPasien')->name('getdata.pasien');
 });

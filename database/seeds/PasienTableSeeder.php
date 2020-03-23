@@ -12,15 +12,15 @@ class PasienTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 20; $i++) { 
+        for ($i = 0; $i < 200; $i++) {
             Pasien::create([
-                'nama'=>"pasien$i",
-                'kelamin'=>'P',
-                'umur'=>19,
-                'alamat'=>'mataram',
-                'telp'=>"081111222333"
+                'no_pasien' => 100 + $i,
+                'nama' => "pasien$i",
+                'kelamin' => 'P',
+                'umur' => 19,
+                'alamat' => 'mataram',
+                'telp' => "081111222333"
             ]);
         }
-        
     }
 }

@@ -12,15 +12,13 @@
         @yield('title')
     </title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/DataTables/datatables.css') }}">
 </head>
 
 <body>
@@ -79,15 +77,27 @@
         </main>
     </div>
 
+    <div>
+        @yield('modal')
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.js') }}"></script>
 
     <script>
-        function isInputNumber(evt) {
+        $(document).ready( function () {
+            function isInputNumber(evt) {
                 var ch = String.fromCharCode(evt.which);
                 if(!(/[0-9]/.test(ch))){
                     evt.preventDefault();
                 }
-        }
+            }
+        } );
     </script>
+
+    @yield('script')
 </body>
 
 </html>

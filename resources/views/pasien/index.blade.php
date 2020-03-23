@@ -18,46 +18,72 @@ List Pasien
             <a href="{{ route('pasien.create') }}" class="btn btn-primary btn-sm float-right">Tambah</a>
         </div>
         <div class="card-body">
-            <table class="table table-hover">
+            <table class="display" id="table_id">
                 <thead>
                     <tr>
                         <th>No. Pasien</th>
                         <th>Nama</th>
-                        <th>Kelamin</th>
+                        <th>Jenis Kelamin</th>
                         <th>Telepon</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($pasiens as $pasien)
-                    <tr>
-                        <td>{{$pasien->no_pasien}}</td>
-                        <td>{{$pasien->nama}}</td>
-                        <td>
-                            {{$pasien->kelamin == 'P' ? 'Wanita':'Pria'}}
-                        </td>
-                        <td>{{$pasien->telp}}</td>
-                        <td>
-                            <a href="{{route('detail.index', ['id'=>$pasien->id])}}"
-                                class="btn btn-primary btn-sm">Detail</a>
-                            <a href="{{ route('pasien.edit', ['pasien'=>$pasien->id]) }}"
-                                class="btn btn-warning btn-sm">Edit</a>
-                            <form onsubmit="return confirm('Yakin menghapus data pasien {{ $pasien->nama }} ?')"
-                                class="d-inline" action="{{ route('pasien.destroy', ['pasien' => $pasien->id ]) }}"
-                                method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" value="Delete" class="btn btn-danger btn-sm">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
             </table>
-            <div class="d-flex justify-content-center">
-                {{$pasiens->appends(Request::all())->links()}}
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('modal')
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="" id="form-delete" class="form-inline" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" id="form-btn_delete">Hapus</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    $(document).ready( function () {
+        var table = $('#table_id').DataTable({
+            processing:true,
+            serverside:true,
+            ajax:"{{ route('getdata.pasien') }}",
+            columns:[
+                {data:'no_pasien'},
+                {data:'nama'},
+                {data:'sex', sortable:false, searchable:false},
+                {data:'telp'},
+                {data:'aksi', sortable:false},
+            ],
+        });
+
+        $('#table_id tbody').on('click', 'button', function () {
+            var url = $(this).data('remote');
+            $('#modal-delete').modal('show');
+            $('#form-delete').attr('action', url);
+
+            var tr = $(this).closest('tr');
+            var row = table.row(tr).data();
+            document.getElementById('modal-body').innerHTML = 'Apakah anda yakin menghapus data pasien <strong>' + row.nama + '</strong> ?';
+        });
+    });
+</script>
 @endsection
