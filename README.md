@@ -7,6 +7,22 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## HOW TO RUN
+1. Clone this project
+2. At root directory copy .env.example to .env
+3. Create database named "SIKK"
+4. Open terminal this several command
+- composer install
+- php artisan key:generate
+- php artisan storage:link
+- php artisan migrate
+- php artisan db:seed
+5. To run this project in terminal type
+- php artisan serve
+6. You can login using
+- username : agung
+- password : 123
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -77,19 +93,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-
-## HOW TO RUN
-1. Clone this project
-2. At root directory copy .env.example to .env
-3. Create database named "SIKK"
-4. Open terminal this several command
-- composer install
-- php artisan key:generate
-- php artisan storage:link
-- php artisan migrate
-- php artisan db:seed
-5. To run this project in terminal type
-- php artisan serve
-6. You can login using
-- username : agung
-- password : 123
