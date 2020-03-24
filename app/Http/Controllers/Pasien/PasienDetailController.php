@@ -165,6 +165,15 @@ class PasienDetailController extends Controller
         Pasien::findOrFail($id);
         $tindakan = Tindakan::findOrFail($detail_id);
         $date = $tindakan->created_at;
+
+        if ($tindakan->foto_sebelum && file_exists(storage_path('app/public/' . $tindakan->foto_sebelum))) {
+            \Storage::delete('public/' . $tindakan->foto_sebelum);
+        }
+
+        if ($tindakan->foto_sesudah && file_exists(storage_path('app/public/' . $tindakan->foto_sesudah))) {
+            \Storage::delete('public/' . $tindakan->foto_sesudah);
+        }
+
         $tindakan->delete();
 
         return redirect()->route('detail.index', ['id' => $id])->with('status', "Berhasil menghapus tindakan $date");
