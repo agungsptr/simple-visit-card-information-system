@@ -12,7 +12,7 @@ List Pasien
 active
 @endsection
 
-@section('menu-pasien-dashboard-status')
+@section('menu-pasien-list-status')
 active
 @endsection
 
@@ -34,7 +34,7 @@ active
                     <th>Nama</th>
                     <th style="width: 100px">Jenis Kelamin</th>
                     <th style="width: 140px">Telepon</th>
-                    <th style="width: 162px">Action</th>
+                    <th style="width: 165px">Action</th>
                 </tr>
             </thead>
         </table>

@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
 @section('title')
-User
+Manage User
 @endsection
 
 @section('title-card')
 List User
+@endsection
+
+@section('menu-user-status')
+active
+@endsection
+
+@section('menu-user-list-status')
+active
 @endsection
 
 @section('content')
@@ -24,9 +32,9 @@ List User
                 <tr>
                     <th>Nama</th>
                     <th>Username</th>
-                    <th>Role</th>
-                    <th>Telepon</th>
-                    <th>Action</th>
+                    <th style="width: 100px">Role</th>
+                    <th style="width: 140px">Telepon</th>
+                    <th style="width: 165px">Action</th>
                 </tr>
             </thead>
         </table>
@@ -65,11 +73,11 @@ List User
         var table = $('#table_id').DataTable({
             processing:true,
             serverside:true,
-            ajax:"{{ route('getdata.pasien') }}",
+            ajax:"{{ route('getdata.user') }}",
             columns:[
-                {data:'no_pasien'},
-                {data:'nama'},
-                {data:'sex', sortable:false, searchable:false},
+                {data:'name'},
+                {data:'username'},
+                {data:'role', sortable:false, searchable:false},
                 {data:'telp'},
                 {data:'aksi', sortable:false},
             ],
@@ -82,7 +90,8 @@ List User
 
             var tr = $(this).closest('tr');
             var row = table.row(tr).data();
-            document.getElementById('modal-body').innerHTML = 'Apakah anda yakin menghapus user <strong>' + row.nama + '</strong> ?';
+            document.getElementById('modal-body').innerHTML = 'Apakah anda yakin menghapus user <strong>' + row.name + '</strong> ?';
         });
     });
 </script>
+@endsection

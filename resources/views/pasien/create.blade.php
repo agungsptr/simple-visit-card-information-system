@@ -66,7 +66,7 @@ active
             <div class="form-group">
                 <label for="">Usia</label>
                 <input name="umur" type="text" class="form-control {{$errors->first('umur') ? 'is-invalid':''}}"
-                    onkeypress="isInputNumber(event)" value="{{old('umur')}}" required>
+                    onkeypress="isInputNumber(event)" value="{{old('umur')}}" maxlength="3" required>
                 @error('umur')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -76,7 +76,7 @@ active
             <div class="form-group">
                 <label for="">Nomor Telepon</label>
                 <input name="telp" type="text" class="form-control {{$errors->first('telp') ? 'is-invalid':''}}"
-                    onkeypress="isInputNumber(event)" value="{{old('telp')}}" required>
+                    onkeypress="isInputNumber(event)" value="{{old('telp')}}" maxlength="15" required>
                 @error('telp')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -95,7 +95,6 @@ active
                 @enderror
             </div>
             <button type="submit" class="btn btn-primary btn-md float-right">Simpan</button>
-            <a href="{{ route('pasien.index') }}" class="btn btn-secondary btn-md float-right mr-2">Kembali</a>
         </form>
     </div>
 </div>

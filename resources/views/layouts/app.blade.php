@@ -74,7 +74,9 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <i class="fas fa-user fa-2x ml-3" style="color: white"></i>
                     <div class="info">
-                        <a href="#" class="d-block font-weight-bold">{{strtoupper(Auth::user()->name)}}</a>
+                        <a href="#" class="d-block font-weight-bold">
+                            {{strtoupper(Auth::user()->name)}}
+                        </a>
                     </div>
                 </div>
 
@@ -105,7 +107,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('pasien.index')}}"
-                                        class="nav-link @yield('menu-pasien-dashboard-status')">
+                                        class="nav-link @yield('menu-pasien-list-status')">
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>List Pasien</p>
                                     </a>
@@ -124,7 +126,7 @@
                         @if (Auth::user()->role == 'admin')
                         <li class="nav-header">USER</li>
                         <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link @yield('menu-user-status')">
                                 <i class="nav-icon fas fa-users-cog"></i>
                                 <p>
                                     Manage User
@@ -133,7 +135,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('user.index')}}" class="nav-link">
+                                    <a href="{{route('user.index')}}" class="nav-link @yield('menu-user-list-status')">
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>List User</p>
                                     </a>
@@ -141,13 +143,14 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('user.create')}}"
+                                        class="nav-link @yield('menu-user-tambah-status')">
                                         <i class="fas fa-plus nav-icon"></i>
                                         <p>Tambah User</p>
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>               
                         @endif
                     </ul>
 
@@ -228,15 +231,12 @@
     <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.js') }}"></script>
 
     <script>
-        $(document).ready(function () {
-      function isInputNumber(evt) {
-        var ch = String.fromCharCode(evt.which);
-        if (!(/[0-9]/.test(ch))) {
-          evt.preventDefault();
-        }
-      }
-    });
-
+        function isInputNumber(evt) {
+                var ch = String.fromCharCode(evt.which);
+                if (!(/[0-9]/.test(ch))) {
+                evt.preventDefault();
+                }
+            }   
     </script>
 
     @yield('script')
