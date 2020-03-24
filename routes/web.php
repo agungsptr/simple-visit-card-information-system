@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-    return redirect()->route('pasien.index');
+    return redirect()->route('search.index');
 });
 
 // disable route '/register'
@@ -40,3 +40,5 @@ Route::group(['prefix' => 'getdata'], function () {
     Route::get('pasien', 'DataTableController@getPasien')->name('getdata.pasien');
     Route::get('user', 'DataTableController@getUser')->name('getdata.user');
 });
+
+Route::get('search', 'SearchController@index')->name('search.index');

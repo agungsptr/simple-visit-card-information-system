@@ -91,7 +91,7 @@
 
                         <li class="nav-header">DATA PASIEN</li>
                         <li class="nav-item">
-                            <a href="{{route('search.index')}}" class="nav-link @yield('menu-cari-status')">
+                            <a href="{{route('search.index')}}" class="nav-link active">
                                 <i class="nav-icon fas fa-search"></i>
                                 <p>
                                     Cari
@@ -185,25 +185,7 @@
                 <div class="container-fluid">
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="card-title">@yield('title-card')</h5>
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    @yield('content')
-                                </div>
-                                <!-- ./card-body -->
-                                <!-- /.card-footer -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
+                        @yield('content-no-card')
                         <!-- /.col -->
                     </div>
 
