@@ -11,7 +11,7 @@
 1. Clone this project
 2. At root directory copy .env.example to .env
 3. Create database named "SIKK"
-4. Open terminal this several command
+4. Open terminal and type this several command
 - composer install
 - php artisan key:generate
 - php artisan storage:link
