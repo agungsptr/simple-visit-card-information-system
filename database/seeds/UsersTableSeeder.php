@@ -15,10 +15,11 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             "name"=>"agung",
+            "username"=>"agung",
             "password"=>Hash::make(123),
             "username"=>"agung",
             "role"=>"admin",
-            "phone"=>"123"
+            "telp"=>"123"
         ]);
     }
 }
