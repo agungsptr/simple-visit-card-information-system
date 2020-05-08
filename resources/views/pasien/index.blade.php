@@ -83,7 +83,7 @@ active
             ],
         });
 
-        $('#table_id tbody').on('click', 'button', function () {
+        $('#table_id tbody').on('click', '.btn-danger', function () {
             var url = $(this).data('remote');
             $('#modal-delete').modal('show');
             $('#form-delete').attr('action', url);

@@ -19,7 +19,7 @@ class DataTableController extends Controller
             ->addColumn('aksi', function ($pasien) {
                 return '<a href="' . route('detail.index', ['id' => $pasien->id]) . '" class="btn btn-primary btn-sm mr-2">Detail</a>'
                     . '<a href="' . route('pasien.edit', ['pasien' => $pasien->id]) . '" class="btn btn-warning btn-sm mr-2">Edit</a>'
-                    . '<button type="button" class="btn btn-danger btn-sm btn-delete" data-remote="' . route('pasien.destroy', ['pasien' => $pasien->id]) . '">Delete</button>';
+                    . '<button type="button" class="btn btn-danger btn-sm" data-remote="' . route('pasien.destroy', ['pasien' => $pasien->id]) . '">Delete</button>';
             })
             ->rawColumns(['aksi'])
             ->toJson();
