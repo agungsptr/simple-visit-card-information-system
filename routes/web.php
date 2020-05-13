@@ -21,8 +21,13 @@ Route::get('/', function () {
 
 // disable route '/register'
 Route::match(["GET", "POST"], "/register", function(){
-    return redirect("/login");
-})->name("register");
+    return abort(404);
+});
+
+Route::match(["GET", "POST"], "/home", function(){
+    return abort(404);
+});
+
 
 Route::resource('pasien', 'Pasien\PasienController');
 
