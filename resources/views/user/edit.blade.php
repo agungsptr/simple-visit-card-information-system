@@ -45,7 +45,7 @@ active
             <div class="form-group">
                 <label for="">Username</label>
                 <input name="username" type="text" class="form-control {{$errors->first('username') ? 'is-invalid':''}}"
-                    value="{{$user->username}}" required>
+                    value="{{$user->username}}" required readonly>
                 @error('username')
                 <div class="invalid-feedback">
                     {{$message}}

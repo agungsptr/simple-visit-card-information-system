@@ -43,7 +43,7 @@ class LoginController extends Controller
     public function username()
     {
         $identity  = request()->get('identity');
-        $fieldName = 'name';
+        $fieldName = 'username';
         request()->merge([$fieldName => $identity]);
         return $fieldName;
     }

@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <a href="{{route('detail.index', ['id'=>$r->id])}}">
+                <a href="{{route('detail.index', ['id'=>$r->id])}}" style="text-decoration: none">
                         <div class="card">
                             <div class="card-body">
                                 <table>

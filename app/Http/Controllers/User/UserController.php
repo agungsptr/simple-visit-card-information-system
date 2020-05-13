@@ -69,7 +69,7 @@ class UserController extends Controller
 
         $user = new User;
         $user->name = $request->get('name');
-        $user->username = $request->get('username');
+        // $user->username = $request->get('username');
         $user->password = \Hash::make($request->get('password'));
         $user->telp = $request->get('telp');
         $user->role = $request->get('role');
@@ -113,7 +113,7 @@ class UserController extends Controller
         $request->validate(
             [
                 'name' => "required|max:191",
-                'username' => "required|unique:users",
+                // 'username' => "required|unique:users",
                 'password' => "required",
                 'password_conf' => "required|same:password",
                 'telp' => "required|max:15",
@@ -121,8 +121,8 @@ class UserController extends Controller
             [
                 'name.required' => 'Nama harus diisi',
                 'name.max' => 'Nama tidak boleh melebihi 191 karakter',
-                'username.required' => 'Username harus diisi',
-                'username.unique' => 'Username sudah terdaftar',
+                // 'username.required' => 'Username harus diisi',
+                // 'username.unique' => 'Username sudah terdaftar',
                 'password.required' => 'Password harus diisi',
                 'password_conf.required' => 'Konfirmasi password harus diisi',
                 'password_conf.same' => 'Password dan Konfirmasi Password harus sama',
@@ -133,7 +133,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
         $user->name = $request->get('name');
-        $user->username = $request->get('username');
+        // $user->username = $request->get('username');
         $user->password = \Hash::make($request->get('password'));
         $user->telp = $request->get('telp');
         $user->role = $request->get('role');
