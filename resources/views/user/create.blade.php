@@ -33,8 +33,8 @@ active
             @csrf
             <div class="form-group">
                 <label for="">Nama</label>
-                <input name="name" type="text""
-                    class=" form-control {{$errors->first('name') ? 'is-invalid':''}}" value="{{old('name')}}" required>
+                <input name="name" type="text" class=" form-control {{$errors->first('name') ? 'is-invalid':''}}"
+                    value="{{old('name')}}" maxlength="190" minlength="3" required>
                 @error('name')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -44,7 +44,7 @@ active
             <div class="form-group">
                 <label for="">Username</label>
                 <input name="username" type="text" class="form-control {{$errors->first('username') ? 'is-invalid':''}}"
-                    value="{{old('username')}}" required>
+                    value="{{old('username')}}" required maxlength="190" minlength="3">
                 @error('username')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -54,7 +54,7 @@ active
             <div class="form-group">
                 <label for="">Password</label>
                 <input name="password" type="password"
-                    class="form-control {{$errors->first('password') ? 'is-invalid':''}}" required>
+                    class="form-control {{$errors->first('password') ? 'is-invalid':''}}" required minlength="6" maxlength="190">
                 @error('password')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -64,7 +64,7 @@ active
             <div class="form-group">
                 <label for="">Konfirmasi Password</label>
                 <input name="password_conf" type="password"
-                    class="form-control {{$errors->first('password_conf') ? 'is-invalid':''}}" required>
+                    class="form-control {{$errors->first('password_conf') ? 'is-invalid':''}}" required minlength="6" maxlength="190">
                 @error('password_conf')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -86,7 +86,7 @@ active
             <div class="form-group">
                 <label for="">Nomor Telepon</label>
                 <input name="telp" type="text" class="form-control {{$errors->first('telp') ? 'is-invalid':''}}"
-                    onkeypress="isInputNumber(event)" value="{{old('telp')}}" maxlength="15">
+                    onkeypress="isInputNumber(event)" value="{{old('telp')}}" maxlength="15" minlength="5">
                 @error('telp')
                 <div class="invalid-feedback">
                     {{$message}}

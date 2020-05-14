@@ -35,7 +35,7 @@ active
             <div class="form-group">
                 <label for="">Nama</label>
                 <input name="name" type="text""
-                    class=" form-control {{$errors->first('name') ? 'is-invalid':''}}" value="{{$user->name}}" required>
+                    class=" form-control {{$errors->first('name') ? 'is-invalid':''}}" value="{{$user->name}}" required minlength="3" maxlength="190">
                 @error('name')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -45,7 +45,7 @@ active
             <div class="form-group">
                 <label for="">Username</label>
                 <input name="username" type="text" class="form-control {{$errors->first('username') ? 'is-invalid':''}}"
-                    value="{{$user->username}}" required readonly>
+                    value="{{$user->username}}" required readonly minlength="3" maxlength="190">
                 @error('username')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -55,7 +55,7 @@ active
             <div class="form-group">
                 <label for="">Password</label>
                 <input name="password" type="password"
-                    class="form-control {{$errors->first('password') ? 'is-invalid':''}}" required>
+                    class="form-control {{$errors->first('password') ? 'is-invalid':''}}" required minlength="6" maxlength="190">
                 @error('password')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -65,7 +65,7 @@ active
             <div class="form-group">
                 <label for="">Konfirmasi Password</label>
                 <input name="password_conf" type="password"
-                    class="form-control {{$errors->first('password_conf') ? 'is-invalid':''}}" required>
+                    class="form-control {{$errors->first('password_conf') ? 'is-invalid':''}}" required minlength="6" maxlength="190">
                 @error('password_conf')
                 <div class="invalid-feedback">
                     {{$message}}

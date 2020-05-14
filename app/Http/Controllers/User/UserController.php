@@ -49,8 +49,8 @@ class UserController extends Controller
         $request->validate(
             [
                 'name' => "required|max:191",
-                'username' => "required|unique:users",
-                'password' => "required",
+                'username' => "required|unique:users|max:191",
+                'password' => "required|min:6|max:190",
                 'password_conf' => "required|same:password",
                 'telp' => "required|max:15",
             ],
@@ -59,7 +59,10 @@ class UserController extends Controller
                 'name.max' => 'Nama tidak boleh melebihi 191 karakter',
                 'username.required' => 'Username harus diisi',
                 'username.unique' => 'Username sudah terdaftar',
+                'username.max' => 'Username tidak boleh melebihi 191 karakter',
                 'password.required' => 'Password harus diisi',
+                'password.max' => 'Password maksimal 190 karakter',
+                'password.min' => 'Password minimal 6 karakter',
                 'password_conf.required' => 'Konfirmasi password harus diisi',
                 'password_conf.same' => 'Password dan Konfirmasi Password harus sama',
                 'telp.required' => 'Nomor telepon harus diisi',
@@ -69,13 +72,13 @@ class UserController extends Controller
 
         $user = new User;
         $user->name = $request->get('name');
-        // $user->username = $request->get('username');
+        $user->username = $request->get('username');
         $user->password = \Hash::make($request->get('password'));
         $user->telp = $request->get('telp');
         $user->role = $request->get('role');
         $user->save();
 
-        return redirect()->route('user.create')->with('status', 'User Berhasil Ditambahkan');
+        return redirect()->route('user.create')->with('status', "User $user->name berhasil ditambahkan");
     }
 
     /**
@@ -114,7 +117,7 @@ class UserController extends Controller
             [
                 'name' => "required|max:191",
                 // 'username' => "required|unique:users",
-                'password' => "required",
+                'password' => "required|min:6|max:190",
                 'password_conf' => "required|same:password",
                 'telp' => "required|max:15",
             ],
@@ -124,6 +127,8 @@ class UserController extends Controller
                 // 'username.required' => 'Username harus diisi',
                 // 'username.unique' => 'Username sudah terdaftar',
                 'password.required' => 'Password harus diisi',
+                'password.max' => 'Password maksimal 190 karakter',
+                'password.min' => 'Password minimal 6 karakter',
                 'password_conf.required' => 'Konfirmasi password harus diisi',
                 'password_conf.same' => 'Password dan Konfirmasi Password harus sama',
                 'telp.required' => 'Nomor telepon harus diisi',
@@ -139,7 +144,7 @@ class UserController extends Controller
         $user->role = $request->get('role');
         $user->save();
 
-        return redirect()->route('user.edit', ['user' => $user->id])->with('status', 'User Berhasil Diedit');
+        return redirect()->route('user.edit', ['user' => $user->id])->with('status', "User $user->name berhasil diedit");
     }
 
     /**
@@ -152,7 +157,13 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $name = $user->name;
-        $user->delete();
-        return redirect()->route('user.index')->with('status', "Berhasil Menghapus User $name");
+
+        if ($user->username != "root") {
+            $user->delete();
+        } else {
+            return redirect()->route('user.index')->with('warning', "User root tidak dapat dihapus");
+        }
+
+        return redirect()->route('user.index')->with('status', "User $name berhasil dihapus");
     }
 }

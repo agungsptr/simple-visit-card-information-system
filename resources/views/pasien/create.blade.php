@@ -34,7 +34,7 @@ active
                 <label for="">No Pasien</label>
                 <input name="no_pasien" type="text" onkeypress="isInputNumber(event)"
                     class="form-control {{$errors->first('no_pasien') ? 'is-invalid':''}}" value="{{old('no_pasien')}}"
-                    required>
+                    required maxlength="18">
                 @error('no_pasien')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -44,7 +44,7 @@ active
             <div class="form-group">
                 <label for="">Nama Pasien</label>
                 <input name="nama" type="text" class="form-control {{$errors->first('nama') ? 'is-invalid':''}}"
-                    value="{{old('nama')}}" required>
+                    value="{{old('nama')}}" required maxlength="190">
                 @error('nama')
                 <div class="invalid-feedback">
                     {{$message}}

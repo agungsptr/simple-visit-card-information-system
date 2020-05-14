@@ -39,7 +39,7 @@ active
             <div class="form-group">
                 <label for="">Nama Pasien</label>
                 <input name="nama" type="text" class="form-control {{$errors->first('nama') ? 'is-invalid':''}}"
-                    value="{{ $pasien->nama }}">
+                    value="{{ old('nama') != null ? old('nama') : $pasien->nama }}" maxlength="190">
                 @error('nama')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -60,8 +60,9 @@ active
             </div>
             <div class="form-group">
                 <label for="">Usia</label>
-                <input name="umur" type="number" class="form-control {{$errors->first('umur') ? 'is-invalid':''}}"
-                    value="{{ $pasien->umur }}">
+                <input name="umur" onkeypress="isInputNumber(event)" type="text"
+                    class="form-control {{$errors->first('umur') ? 'is-invalid':''}}" value="{{ old('umur') != null ? old('umur') : $pasien->umur    }}"
+                    maxlength="3">
                 @error('umur')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -70,8 +71,8 @@ active
             </div>
             <div class="form-group">
                 <label for="">Nomor Telepon</label>
-                <input name="telp" type="number" maxlength="15"
-                    class="form-control {{$errors->first('telp') ? 'is-invalid':''}}" value="{{ $pasien->telp }}">
+                <input name="telp" onkeypress="isInputNumber(event)" type="text" maxlength="15"
+                    class="form-control {{$errors->first('telp') ? 'is-invalid':''}}" value="{{ old('telp') != null ? old('telp') : $pasien->telp }}">
                 @error('telp')
                 <div class="invalid-feedback">
                     {{$message}}
@@ -81,7 +82,7 @@ active
             <div class="form-group">
                 <label for="">Alamat</label>
                 <textarea name="alamat" id="" cols="30" rows="3"
-                    class="form-control {{$errors->first('alamat') ? 'is-invalid':''}}">{{ $pasien->alamat }}</textarea>
+                    class="form-control {{$errors->first('alamat') ? 'is-invalid':''}}">{{ old('alamat') != null ? old('alamat') : $pasien->alamat }}</textarea>
                 @error('alamat')
                 <div class="invalid-feedback">
                     {{$message}}

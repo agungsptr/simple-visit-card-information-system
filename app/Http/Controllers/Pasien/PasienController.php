@@ -43,7 +43,7 @@ class PasienController extends Controller
     {
         $request->validate(
             [
-                'no_pasien' => 'required|unique:pasien',
+                'no_pasien' => 'required|unique:pasien|max:18',
                 'nama' => "required|max:191",
                 'kelamin' => "required|max:1",
                 'umur' => "required|max:3",
@@ -53,6 +53,7 @@ class PasienController extends Controller
             [
                 'no_pasien.required' => 'No pasien harus diisi',
                 'no_pasien.unique' => 'No pasien sudah terdaftar',
+                'no_pasien.max' => 'No pasien maksimal 18 digit',
                 'nama.required' => 'Nama harus diisi',
                 'nama.max' => 'Nama tidak boleh melebihi 191 karakter',
                 'kelamin.required' => 'Jenis kelamin harus diisi',
@@ -66,7 +67,8 @@ class PasienController extends Controller
         );
 
         Pasien::create($request->all());
-        return redirect()->route('pasien.create')->with('status', 'Pasien Berhasil Ditambahkan');
+        $nama = $request->get('nama');
+        return redirect()->route('pasien.create')->with('status', "Pasien $nama berhasil ditambahkan");
     }
 
     /**
@@ -130,7 +132,7 @@ class PasienController extends Controller
         $pasien->telp = $request->get('telp');
         $pasien->save();
 
-        return redirect()->route('pasien.edit', ['pasien' => $id])->with('status', 'Pasien Berhasil Diedit');
+        return redirect()->route('pasien.edit', ['pasien' => $id])->with('status', "Pasien $pasien->nama berhasil diedit");
     }
 
     /**
@@ -144,6 +146,6 @@ class PasienController extends Controller
         $pasien = Pasien::findOrFail($id);
         $name = $pasien->nama;
         $pasien->delete();
-        return redirect()->route('pasien.index')->with('status', "Berhasil Menghapus Pasien $name");
+        return redirect()->route('pasien.index')->with('status', "Data pasien $name berhasil dihapus");
     }
 }
