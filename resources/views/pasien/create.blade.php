@@ -31,17 +31,6 @@ active
         <form action="{{ route('pasien.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="">No Pasien</label>
-                <input name="no_pasien" type="text" onkeypress="isInputNumber(event)"
-                    class="form-control {{$errors->first('no_pasien') ? 'is-invalid':''}}" value="{{old('no_pasien')}}"
-                    required maxlength="18">
-                @error('no_pasien')
-                <div class="invalid-feedback">
-                    {{$message}}
-                </div>
-                @enderror
-            </div>
-            <div class="form-group">
                 <label for="">Nama Pasien</label>
                 <input name="nama" type="text" class="form-control {{$errors->first('nama') ? 'is-invalid':''}}"
                     value="{{old('nama')}}" required maxlength="190">

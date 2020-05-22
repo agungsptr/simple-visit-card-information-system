@@ -65,13 +65,13 @@ class PasienDetailController extends Controller
         $tindakan = Tindakan::create($request->all());
 
         if ($request->file('foto_sebelum')) {
-            $dir = "public/Foto/$pasien->no_pasien/Sebelum/";
+            $dir = "Foto/$pasien->id/Sebelum/";
             $file = $request->file('foto_sebelum')->store($dir, 'public');
             $tindakan->foto_sebelum = $file;
         }
 
         if ($request->file('foto_sesudah')) {
-            $dir = "public/Foto/$pasien->no_pasien/Sesudah";
+            $dir = "Foto/$pasien->id/Sesudah";
             $file = $request->file('foto_sesudah')->store($dir, 'public');
             $tindakan->foto_sesudah = $file;
         }
@@ -129,19 +129,19 @@ class PasienDetailController extends Controller
         $tindakan->terapi = $request->get('terapi');
 
         if ($request->file('foto_sebelum')) {
-            if ($tindakan->foto_sebelum && file_exists(storage_path('app/public' . $tindakan->foto_sebelum))) {
+            if ($tindakan->foto_sebelum) {
                 Storage::delete('public/' . $tindakan->foto_sebelum);
             }
-            $dir = "public/Foto/$pasien->no_pasien/Sebelum/";
+            $dir = "Foto/$pasien->id/Sebelum/";
             $file = $request->file('foto_sebelum')->store($dir, 'public');
             $tindakan->foto_sebelum = $file;
         }
 
         if ($request->file('foto_sesudah')) {
-            if ($tindakan->foto_sesudah && file_exists(storage_path('app/public' . $tindakan->foto_sesudah))) {
+            if ($tindakan->foto_sesudah) {
                 Storage::delete('public/' . $tindakan->foto_sesudah);
             }
-            $dir = "public/Foto/$pasien->no_pasien/Sesudah/";
+            $dir = "Foto/$pasien->id/Sesudah/";
             $file = $request->file('foto_sesudah')->store($dir, 'public');
             $tindakan->foto_sesudah = $file;
         }

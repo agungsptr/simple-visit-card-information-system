@@ -43,7 +43,7 @@ class PasienController extends Controller
     {
         $request->validate(
             [
-                'no_pasien' => 'required|unique:pasien|max:18',
+                // 'no_pasien' => 'required|unique:pasien|max:18',
                 'nama' => "required|max:191",
                 'kelamin' => "required|max:1",
                 'umur' => "required|max:3",
@@ -51,9 +51,9 @@ class PasienController extends Controller
                 'telp' => "required|max:15",
             ],
             [
-                'no_pasien.required' => 'No pasien harus diisi',
-                'no_pasien.unique' => 'No pasien sudah terdaftar',
-                'no_pasien.max' => 'No pasien maksimal 18 digit',
+                // 'no_pasien.required' => 'No pasien harus diisi',
+                // 'no_pasien.unique' => 'No pasien sudah terdaftar',
+                // 'no_pasien.max' => 'No pasien maksimal 18 digit',
                 'nama.required' => 'Nama harus diisi',
                 'nama.max' => 'Nama tidak boleh melebihi 191 karakter',
                 'kelamin.required' => 'Jenis kelamin harus diisi',
@@ -145,7 +145,12 @@ class PasienController extends Controller
     {
         $pasien = Pasien::findOrFail($id);
         $name = $pasien->nama;
-        $pasien->delete();
+        $id = $pasien->id;
+
+        if ($pasien->delete()) {
+            \Storage::deleteDirectory("public/Foto/$id/");
+        }
+
         return redirect()->route('pasien.index')->with('status', "Data pasien $name berhasil dihapus");
     }
 }

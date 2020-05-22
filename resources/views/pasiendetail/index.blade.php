@@ -28,7 +28,7 @@ active
         <div class="row mb-2">
             <div class="col-2">
                 <strong>No. Pasien</strong>
-                <input type="text" value="{{$pasien->no_pasien}}" readonly class="form-control">
+                <input type="text" value="{{$pasien->id}}" readonly class="form-control">
             </div>
         </div>
         <div class="row mb-2">

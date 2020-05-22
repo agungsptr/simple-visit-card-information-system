@@ -18,7 +18,7 @@ class SearchController extends Controller
         if ($request->get('q')) {
             $q = $request->get('q');
             $search_result = Pasien::where('nama', 'LIKE', "%$q%")
-                ->orWhere('no_pasien', 'LIKE', "%$q%")
+                ->orWhere('id', 'LIKE', "%$q%")
                 ->orWhere('telp', 'LIKE', "%$q%")
                 ->paginate(5);
         }

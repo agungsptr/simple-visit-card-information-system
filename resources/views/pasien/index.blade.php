@@ -75,7 +75,7 @@ active
             serverside:true,
             ajax:"{{ route('getdata.pasien') }}",
             columns:[
-                {data:'no_pasien'},
+                {data:'id'},
                 {data:'nama'},
                 {data:'sex', sortable:false, searchable:false},
                 {data:'telp'},

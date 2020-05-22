@@ -52,7 +52,7 @@ class UserController extends Controller
                 'username' => "required|unique:users|max:191",
                 'password' => "required|min:6|max:190",
                 'password_conf' => "required|same:password",
-                'telp' => "required|max:15",
+                'telp' => "max:15",
             ],
             [
                 'name.required' => 'Nama harus diisi',
@@ -65,7 +65,6 @@ class UserController extends Controller
                 'password.min' => 'Password minimal 6 karakter',
                 'password_conf.required' => 'Konfirmasi password harus diisi',
                 'password_conf.same' => 'Password dan Konfirmasi Password harus sama',
-                'telp.required' => 'Nomor telepon harus diisi',
                 'telp.max' => 'Nomor telepon tidak boleh melebihi 15 digit',
             ]
         );
@@ -119,7 +118,7 @@ class UserController extends Controller
                 // 'username' => "required|unique:users",
                 'password' => "required|min:6|max:190",
                 'password_conf' => "required|same:password",
-                'telp' => "required|max:15",
+                'telp' => "max:15",
             ],
             [
                 'name.required' => 'Nama harus diisi',
@@ -131,7 +130,6 @@ class UserController extends Controller
                 'password.min' => 'Password minimal 6 karakter',
                 'password_conf.required' => 'Konfirmasi password harus diisi',
                 'password_conf.same' => 'Password dan Konfirmasi Password harus sama',
-                'telp.required' => 'Nomor telepon harus diisi',
                 'telp.max' => 'Nomor telepon tidak boleh melebihi 15 digit',
             ]
         );

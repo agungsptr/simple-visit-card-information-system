@@ -34,7 +34,7 @@ active
 
             <div class="form-group">
                 <label for="">No Pasien</label>
-                <input name="no_pasien" type="number" class="form-control" readonly value="{{ $pasien->no_pasien }}">
+                <input name="no_pasien" type="number" class="form-control" readonly value="{{ $pasien->id }}">
             </div>
             <div class="form-group">
                 <label for="">Nama Pasien</label>
