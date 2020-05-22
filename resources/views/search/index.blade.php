@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <table>
                                     <tr>
-                                        <td style="width: 80px">{{$r->no_pasien}}</td>
+                                        <td style="width: 80px">{{$r->id}}</td>
                                         <td style="width: 110px">{{$r->telp}}</td>
                                         <td style="width: 200px">{{$r->nama}}</td>
                                     </tr>
