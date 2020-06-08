@@ -41,7 +41,7 @@ active
                         @endif
                     </div>
                     <input name="foto_sebelum" type="file" class="form-control-file"
-                        value="{{$tindakan->foto_sebelum}}">
+                        value="{{$tindakan->foto_sebelum}}" accept="image/*">
                 </div>
             </div>
             <div class="col-6">
@@ -55,7 +55,7 @@ active
                         @endif
                     </div>
                     <input name="foto_sesudah" type="file" class="form-control-file"
-                        value="{{$tindakan->foto_sesudah}}">
+                        value="{{$tindakan->foto_sesudah}}" accept="image/*">
                 </div>
             </div>
         </div>

@@ -30,13 +30,13 @@ active
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Foto Sebelum</label>
-                    <input name="foto_sebelum" type="file" class="form-control-file">
+                    <input name="foto_sebelum" type="file" class="form-control-file" accept="image/*">
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Foto Sesudah</label>
-                    <input name="foto_sesudah" type="file" class="form-control-file">
+                    <input name="foto_sesudah" type="file" class="form-control-file" accept="image/*">
                 </div>
             </div>
         </div>
