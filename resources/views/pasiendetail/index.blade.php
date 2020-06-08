@@ -110,7 +110,7 @@ active
         var table = $('#table_id').DataTable({
             processing:true,
             serverside:true,
-            ajax:"{{ route('getdata.pasiendetail') }}",
+            ajax:"{{ route('getdata.pasiendetail', ['id'=>"+$pasien->id+"]) }}",
             columns:[
                 {data:'tanggal'},
                 {data:'diagnosa'},

@@ -44,7 +44,7 @@ Route::group(['prefix' => 'pasien/detail/{id}'], function () {
 
 Route::group(['prefix' => 'getdata'], function () {
     Route::get('pasien', 'DataTableController@getPasien')->name('getdata.pasien');
-    Route::get('pasiendetail', 'DataTableController@getPasienDetail')->name('getdata.pasiendetail');
+    Route::get('pasiendetail/{id}', 'DataTableController@getPasienDetail')->name('getdata.pasiendetail');
     Route::get('user', 'DataTableController@getUser')->name('getdata.user');
 });
 

@@ -25,9 +25,9 @@ class DataTableController extends Controller
             ->toJson();
     }
 
-    public function getPasienDetail()
+    public function getPasienDetail($id)
     {
-        return datatables()->of(Tindakan::all())
+        return datatables()->of(Tindakan::where('pasien_id', $id))
             ->addColumn('tanggal', function ($tindakan) {
                 return substr($tindakan->created_at, 0, 11);
             })
