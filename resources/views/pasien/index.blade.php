@@ -81,6 +81,7 @@ active
                 {data:'telp'},
                 {data:'aksi', sortable:false},
             ],
+            order:[[1, "asc"]],
         });
 
         $('#table_id tbody').on('click', '.btn-danger', function () {
