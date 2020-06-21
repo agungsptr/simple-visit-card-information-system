@@ -120,6 +120,7 @@ active
                 {data:'aksi', sortable:false}
             ],
             searching:false,
+            order:[[01, "desc"]],
         });
 
         $('#table_id tbody').on('click', 'button', function () {

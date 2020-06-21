@@ -42,7 +42,7 @@ active
                 <tr>
                     <th>Nama</th>
                     <th>Username</th>
-                    <th style="width: 100px">Role</th>
+                    <th style="width: 100px">Status</th>
                     <th style="width: 140px">Telepon</th>
                     <th style="width: 165px">Action</th>
                 </tr>
